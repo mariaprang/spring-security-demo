@@ -1,23 +1,72 @@
 package springsecuritydemo.demo.model;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity {
+public class User extends BaseEntity implements UserDetails {
+
+    public enum Role {
+        USER, ADMIN
+    }
 
     private String username;
     private String password;
+    private Role role;
+
+    @Transient
+    private boolean accountNonExpired;
+    @Transient
+    private boolean accountNonLocked;
+    @Transient
+    private boolean credentialsNonExpired;
+    @Transient
+    private boolean isEnabled;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+        this.role = Role.USER;
     }
 
     public String getUsername() {
         return username;
+    }
+
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Arrays.asList(new SimpleGrantedAuthority(Role.USER.toString()));
+
     }
 
     public String getPassword() {
