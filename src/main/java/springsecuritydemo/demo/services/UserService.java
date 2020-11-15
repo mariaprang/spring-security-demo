@@ -21,7 +21,7 @@ public class UserService {
     }
 
     public User loadUserByUsername(String username) {
-        return userRepository.findUserByEmail(username);
+        return userRepository.findUserByUsername(username);
     }
 
     public List<User> findAllUsers() {

@@ -7,6 +7,6 @@ import springsecuritydemo.demo.model.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 
-    public User findUserByEmail(String email);
+    public User findUserByUsername(String email);
 
 }

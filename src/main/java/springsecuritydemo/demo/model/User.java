@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -13,14 +14,17 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity implements UserDetails {
+public class User extends BaseEntity<Long> implements UserDetails {
 
     public enum Role {
         USER, ADMIN
     }
 
+    @Column(name="email")
     private String username;
+    @Column(name="password")
     private String password;
+    @Column(name="user_role")
     private Role role;
 
     @Transient

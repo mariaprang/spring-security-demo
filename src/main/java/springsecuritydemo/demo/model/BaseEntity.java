@@ -2,12 +2,14 @@ package springsecuritydemo.demo.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
 
+
+@MappedSuperclass
 public class BaseEntity<PK extends Serializable> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="user_id")
     private PK id;
 
     public PK getId() {
