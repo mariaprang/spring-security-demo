@@ -1,9 +1,8 @@
-package springsecuritydemo.demo;
+package springsecuritydemo.demo.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class BaseEntity<PK extends Serializable> implements Serializable {
 
@@ -35,4 +34,6 @@ public class BaseEntity<PK extends Serializable> implements Serializable {
         BaseEntity<?> other = (BaseEntity<?>) obj;
         return id != null && id.equals(other.id);
     }
+
+
 }
