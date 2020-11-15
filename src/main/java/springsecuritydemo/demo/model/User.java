@@ -42,6 +42,8 @@ public class User extends BaseEntity<Long> implements UserDetails {
         this.role = Role.USER;
     }
 
+    public User(){}
+
     public String getUsername() {
         return username;
     }
