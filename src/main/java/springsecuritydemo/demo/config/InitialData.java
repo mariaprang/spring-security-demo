@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import springsecuritydemo.demo.model.User;
 import springsecuritydemo.demo.repository.UserRepository;
+import springsecuritydemo.demo.services.UserService;
 
 import javax.annotation.PostConstruct;
 
@@ -12,12 +13,12 @@ import javax.annotation.PostConstruct;
 public class InitialData {
 
 
-    private final UserRepository userRepository;
+    private final UserService userRepository;
     private final PasswordEncoder passwordEncoder;
 
 
     @Autowired
-    public InitialData(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public InitialData(UserService userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }

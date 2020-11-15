@@ -40,14 +40,24 @@ public class User extends BaseEntity<Long> implements UserDetails {
         this.username = username;
         this.password = password;
         this.role = Role.USER;
+        this.isEnabled = true;
+        this.credentialsNonExpired = true;
+        this.accountNonExpired = true;
+        this.accountNonLocked = true;
+        this.accountNonExpired = true;
     }
 
-    public User(){}
+    public User(){
+        this.isEnabled = true;
+        this.credentialsNonExpired = true;
+        this.accountNonLocked = true;
+        this.accountNonExpired = true;
+        this.accountNonExpired = true;
+    }
 
     public String getUsername() {
         return username;
     }
-
 
     @Override
     public boolean isAccountNonExpired() {
